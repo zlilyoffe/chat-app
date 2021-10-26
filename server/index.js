@@ -36,15 +36,17 @@ io.on('connection', (socket) => {
         callback();
     });
 
-    socket.on('disconnect', () => {
-        const user = removeUser(socket.id);
+socket.on('disconnect', () => {
+    const user = removeUser(socket.id);
 
-        if(user){
-            io.to(user.room).emit('message', { user: 'admin', text: `${user.name} has left.`})
-        }
+    if(user){
+        io.to(user.room).emit('message', { user: 'admin', text: `${user.name} has left.`})
+    }
     })
 });
 
 app.use(router);
 
 server.listen(PORT, () => console.log(`Server has started on port ${PORT}`));
+
+
