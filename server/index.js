@@ -1,6 +1,7 @@
 const http = require ('http');
 const express = require ('express');
 const socketio = require ('socket.io');
+const cors = require('cors');
 
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./users.js');
 
