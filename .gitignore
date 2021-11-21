@@ -4,3 +4,6 @@ client/public/favicon.ico
 client/public/logo192.png
 client/public/logo512.png
 client/public/robots.txt
+
+# Local Netlify folder
+.netlify

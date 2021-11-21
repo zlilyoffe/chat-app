@@ -3,17 +3,24 @@ const express = require ('express');
 const socketio = require ('socket.io');
 const cors = require('cors');
 
+
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./users.js');
 
 const PORT = process.env.PORT || 5000;
-
+//check
 const router = require('./router');
 const { Console } = require('console');
 const { cpSync } = require('fs');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
+const io = require('socket.io')(server, {
+    cors: {
+      origin: '*',
+    }
+  });
+app.use(cors());
+
 
 io.on('connection', (socket) => {
     socket.on('join',({name, room}, callback)=> {
@@ -55,4 +62,5 @@ app.use(router);
 
 server.listen(PORT, () => console.log(`Server has started on port ${PORT}`));
 
+//    origin: 'https://6183b79aae22a8bb20d1df8d--clever-ardinghelli-efddf8.netlify.app'
 
